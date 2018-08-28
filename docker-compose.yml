@@ -8,6 +8,5 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./services/client:/svr/client
-    environment:
-      - NPM_CONFIG_LOGLEVEL = info
+      - ./services/client:/svr/services/client
+

@@ -1,9 +1,9 @@
 FROM node:8.0.0-alpine
-RUN mkdir /srv/client
-WORKDIR /srv/client
-COPY package.json .
-RUN npm install --no-progress --logLevel warn
+RUN mkdir -p /srv/services/client
+WORKDIR /srv/services/client
+COPY package.json ./
+RUN yarn && yarn cache clean
 COPY . .
-CMD [ "npm", "run", "start" ]
+CMD ["npm", "run", "start"]
 
 #docker build -f Dockerfile-dev.Dockerfile .
