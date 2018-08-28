@@ -1,0 +1,13 @@
+version: '3.6'
+
+services:
+  client:
+    build: 
+      context: ./services/client
+      dockerfile: Dockerfile-dev.Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./services/client:/svr/client
+    environment:
+      - NPM_CONFIG_LOGLEVEL = info
