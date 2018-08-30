@@ -11,4 +11,13 @@ services:
       - /app/node_modules
       - './services/client:/srv/services/client'
 
+  test:
+    build: 
+      context: ./services/client
+      dockerfile: Dockerfile-dev.Dockerfile
+    volumes:
+      - /app/node_modules
+      - './services/client:/srv/services/client'
+    command: ["yarn", "run", "test"]
+  
 
