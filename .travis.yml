@@ -2,8 +2,8 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build -t devops-docker-react -f /services/client/Dockerfile-dev.Dockerfile .
+before_install: cd /services/client/
+  - docker build -t devops-docker-react -f Dockerfile-dev.Dockerfile .
 
 script:
   - docker run devops-docker-react yarn run test
