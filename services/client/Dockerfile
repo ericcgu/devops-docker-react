@@ -1,11 +1,12 @@
-FROM node:8.0.0-alpine as build
+FROM node:8.0.0-alpine as builder
 WORKDIR '/srv/services/client'
 COPY package.json .
 RUN yarn && yarn cache clean
 COPY . .
-CMD ["npm", "run", "build"]
+RUN ["yarn", "build"]
 
-FROM nginx 
-COPY --from=build /app/build /usr/share/nginx/html
+FROM nginx:stable-alpine 
+COPY --from=builder '/srv/services/client/build' '/usr/share/nginx/html'
 
-#docker build -f .
+#docker build .
+#docker run -p 8080:80 [container_id]
