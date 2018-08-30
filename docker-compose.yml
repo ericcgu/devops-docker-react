@@ -8,5 +8,7 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./services/client:/svr/services/client
+      - /app/node_modules
+      - './services/client:/srv/services/client'
+
 
