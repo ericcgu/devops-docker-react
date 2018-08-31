@@ -1,6 +1,6 @@
 FROM node:8.0.0-alpine as builder
 WORKDIR '/srv/services/client'
-COPY package.json .
+COPY package*.json ./
 RUN yarn && yarn cache clean
 COPY . .
 RUN ["yarn", "build"]
