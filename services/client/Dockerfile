@@ -5,7 +5,8 @@ RUN yarn && yarn cache clean
 COPY . .
 RUN ["yarn", "build"]
 
-FROM nginx:stable-alpine 
+FROM nginx:stable-alpine
+EXPOSE 80 
 COPY --from=builder '/srv/services/client/build' '/usr/share/nginx/html'
 
 #docker build .
